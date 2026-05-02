@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Estadísticas</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <main class="container">
+
+    <!-- HERO ──────────────────────────────────────────────────────── -->
+    <header class="hero">
+      <div class="hero-badge">JS · Estadísticas Descriptivas</div>
+      <h1 class="hero-title">
+        <span class="accent">Σ</span> Calculadora
+        <br>Estadística
+      </h1>
+      <p class="hero-sub">
+        Ingresa una lista de números separados por comas y obtén
+        la <strong>media</strong>, <strong>mediana</strong> y
+        <strong>desviación estándar</strong> al instante.
+      </p>
+    </header>
+
+    <!-- INPUT ─────────────────────────────────────────────────────── -->
+    <section class="card input-card">
+      <label class="field-label" for="inputNumeros">
+        Números <span class="label-hint">(separados por comas)</span>
+      </label>
+      <div class="input-row">
+        <input
+          id="inputNumeros"
+          type="text"
+          class="field"
+          placeholder="Ej: 4, 8, 15, 16, 23, 42"
+          autocomplete="off"
+        />
+        <button id="btnCalcular" class="btn-calc">Calcular</button>
+      </div>
+      <div class="presets">
+        <span class="presets-label">Ejemplos rápidos:</span>
+        <button class="chip" data-set="1,2,3,4,5,6,7,8,9,10">1 – 10</button>
+        <button class="chip" data-set="2,4,4,4,5,5,7,9">Clásico σ=2</button>
+        <button class="chip" data-set="100,200,300,400,500">Centenas</button>
+        <button class="chip" data-set="-5,-3,0,3,5">Negativos</button>
+      </div>
+    </section>
+
+    <!-- RESULTADOS ────────────────────────────────────────────────── -->
+    <section id="resultados" class="results hidden" aria-live="polite">
+      <div class="stat-card" id="cardMedia">
+        <div class="stat-icon">x̄</div>
+        <div class="stat-info">
+          <span class="stat-name">Media</span>
+          <span class="stat-value" id="valMedia">—</span>
+          <span class="stat-desc">Promedio aritmético</span>
+        </div>
+      </div>
+      <div class="stat-card" id="cardMediana">
+        <div class="stat-icon">M</div>
+        <div class="stat-info">
+          <span class="stat-name">Mediana</span>
+          <span class="stat-value" id="valMediana">—</span>
+          <span class="stat-desc">Valor central del conjunto</span>
+        </div>
+      </div>
+      <div class="stat-card" id="cardDesv">
+        <div class="stat-icon">σ</div>
+        <div class="stat-info">
+          <span class="stat-name">Desviación Estándar</span>
+          <span class="stat-value" id="valDesv">—</span>
+          <span class="stat-desc">Dispersión poblacional</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="error" class="error-box hidden" role="alert"></div>
+
+    <!-- DETALLE ───────────────────────────────────────────────────── -->
+    <section id="detalle" class="detail-card hidden">
+      <h2 class="detail-title">Detalle del conjunto</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <span class="detail-label">Cantidad</span>
+          <span class="detail-val" id="detN">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Mínimo</span>
+          <span class="detail-val" id="detMin">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Máximo</span>
+          <span class="detail-val" id="detMax">—</span>
+        </div>
+        <div class="detail-item">
+          <span class="detail-label">Rango</span>
+          <span class="detail-val" id="detRango">—</span>
+        </div>
+      </div>
+      <div class="numbers-display" id="numerosDisplay"></div>
+    </section>
+
+  </main>
+
+  <!-- ① Módulo JS refactorizado -->
+  <script src="estadisticas.js"></script>
+  <!-- ② Lógica de la interfaz -->
+  <script src="app.js"></script>
+
+</body>
+</html>
